@@ -33,8 +33,11 @@ def list_sport(debug: bool) -> List[str]:
 
     sport_list = list()
     for d in D:
-        sport = d['game_en_name']
-        sport_list.append(sport)
+        sport_dict = dict()
+        
+        sport_dict['game_name'] = d['game_name']
+        sport_dict['game_en_name'] = d['game_en_name']
+        sport_list.append(sport_dict)
     
     return sport_list
 

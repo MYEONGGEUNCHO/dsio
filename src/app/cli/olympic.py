@@ -47,21 +47,25 @@ def list_schedule(
 
 
 @main.command()
-@click.option('-s', '--sport', default="basketball")
+@click.option('-g', '--game_name', default="농구")
+@click.option('-ge', '--game_en_name', default="basketball")
 @click.option('-d', '--debug', default=False, is_flag=True)
 def collect_schedule(
-        sport: str
+        game_name: str
+        , game_en_name: str
         , debug: bool
     ):
     """경기일정 정보 수집 단위기능
 
     Args:
-        sport (str): 영문종목명
+        sport (str): _description_
+        debug (bool): _description_
     """
     from batch.olympic.collect_schedule import collect_schedule
 
     print(collect_schedule(
-        sport=sport
+        game_name=game_name
+        , game_en_name=game_en_name
         , debug=debug
     ))
 

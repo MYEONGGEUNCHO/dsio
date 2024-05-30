@@ -41,7 +41,10 @@ def db_save(
         mongo_col = mongo_db['sports_info']
         mongo_col.insert_many(result)
 
-def bulk_sport_info():
+def bulk_sport_info(
+        sport: List[Dict[str, str]]
+        , debug: bool
+    ):
     pass
 
 

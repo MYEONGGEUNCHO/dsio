@@ -100,7 +100,7 @@ def list_schedule(debug: bool):
     sports = list_sport(debug)
 
     for sport in sports:
-        url = f"https://olympics.com/ko/paris-2024/schedule/{sport}"
+        url = f"https://olympics.com/ko/paris-2024/schedule/{sport["game_en_name"]}"
         headers = {
             'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.3'
         }
@@ -124,7 +124,7 @@ def list_schedule(debug: bool):
                 for elem in target_element:
                     date_elem = elem.find(class_="SportScheduleEventsList-styles__DateContainer-sc-4f7d284d-1")
                     stadium_elem = elem.find(class_="EventList-styles__VenueContainer-sc-32051fc0-2")
-                    tournament_info = elem.find_all(class_="EventList-styles__EventContainer-sc-32051fc0-1")
+                    tournament_info = elem.find_all(class_="EventListItem-styles__Wrapper-sc-6aa92e06-0")
                     
                     for schedule in tournament_info:
                         elements_dict = dict()
@@ -137,7 +137,8 @@ def list_schedule(debug: bool):
                         right_country = schedule.find(class_='EventListItem-styles__RightCountryContainer-sc-6aa92e06-12')
                         
                         elements_dict['std_date'] = std_date
-                        elements_dict['game_name'] = sport
+                        elements_dict['game_name'] = sport["game_name"]
+                        elements_dict['game_en_name'] = sport["game_en_name"]
                         elements_dict['date'] = date_elem.get_text(separator=" ", strip=True) if date_elem else ""
                         elements_dict['stadium'] = stadium_elem.get_text(separator=" ", strip=True) if stadium_elem else ""
                         elements_dict['time'] = time_elem.get_text(separator=" ", strip=True) if time_elem else ""
@@ -171,7 +172,8 @@ def list_schedule(debug: bool):
 
 
 def collect_schedule(
-        sport: str
+        game_name: str
+        , game_en_name: str
         , debug: bool
     ):
     """단일 스포츠 종목 수집 기능
@@ -180,7 +182,7 @@ def collect_schedule(
         sports (str): 종목 영문명
     """
     # 대상 URL
-    url = f"https://olympics.com/ko/paris-2024/schedule/{sport}"
+    url = f"https://olympics.com/ko/paris-2024/schedule/{game_en_name}"
     headers = {
         'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.3'
     }
@@ -202,34 +204,34 @@ def collect_schedule(
         if target_element:
             save_row = list()
             for elem in target_element:
-                date_elem = elem.find(class_="SportScheduleEventsList-styles__DateContainer-sc-4f7d284d-1")
-                stadium_elem = elem.find(class_="EventList-styles__VenueContainer-sc-32051fc0-2")
-                sports = elem.find_all(class_="EventList-styles__EventContainer-sc-32051fc0-1")
-                
-                for sport in sports:
-                    elements_dict = dict()
-                    time_elem = sport.find(class_="EventListItem-styles__Time-sc-6aa92e06-2")
-                    tournament_elem = sport.find(class_="EventListItem-styles__ContentContainer-sc-6aa92e06-3")
-                
-
-                    country = sport.find(class_="EventListItem-styles__MatchContainer-sc-6aa92e06-4")
-                    left_country = sport.find(class_='EventListItem-styles__LeftCountryContainer-sc-6aa92e06-11')
-                    right_country = sport.find(class_='EventListItem-styles__RightCountryContainer-sc-6aa92e06-12')
+                    date_elem = elem.find(class_="SportScheduleEventsList-styles__DateContainer-sc-4f7d284d-1")
+                    stadium_elem = elem.find(class_="EventList-styles__VenueContainer-sc-32051fc0-2")
+                    tournament_info = elem.find_all(class_="EventListItem-styles__Wrapper-sc-6aa92e06-0")
                     
-          
-                    elements_dict['std_date'] = std_date
-                    elements_dict['game_name'] = sport
-                    elements_dict['date'] = date_elem.get_text(separator=" ", strip=True) if date_elem else ""
-                    elements_dict['stadium'] = stadium_elem.get_text(separator=" ", strip=True) if stadium_elem else ""
-                    elements_dict['time'] = time_elem.get_text(separator=" ", strip=True) if time_elem else ""
-                    elements_dict['tournament'] = tournament_elem.get_text(separator=" ", strip=True) if tournament_elem else ""
-                    elements_dict['country'] = country.get_text(separator=" ", strip=True) if country else ""
-                    elements_dict['left_country'] = left_country.get_text(separator=" ", strip=True) if left_country else ""
-                    elements_dict['left_country_flag'] = left_country.find('img')['src'] if left_country else ""
-                    elements_dict['right_country'] = right_country.get_text(separator=" ", strip=True) if right_country else ""
-                    elements_dict['right_country_flag'] = right_country.find('img')['src'] if right_country else ""
+                    for schedule in tournament_info:
+                        elements_dict = dict()
+                        time_elem = schedule.find(class_="EventListItem-styles__Time-sc-6aa92e06-2")
+                        tournament_elem = schedule.find(class_="EventListItem-styles__ContentContainer-sc-6aa92e06-3")
+                    
 
-                    save_row.append(elements_dict)
+                        country = schedule.find(class_="EventListItem-styles__MatchContainer-sc-6aa92e06-4")
+                        left_country = schedule.find(class_='EventListItem-styles__LeftCountryContainer-sc-6aa92e06-11')
+                        right_country = schedule.find(class_='EventListItem-styles__RightCountryContainer-sc-6aa92e06-12')
+          
+                        elements_dict['std_date'] = std_date
+                        elements_dict['game_name'] = game_name
+                        elements_dict['game_en_name'] = game_en_name
+                        elements_dict['date'] = date_elem.get_text(separator=" ", strip=True) if date_elem else ""
+                        elements_dict['stadium'] = stadium_elem.get_text(separator=" ", strip=True) if stadium_elem else ""
+                        elements_dict['time'] = time_elem.get_text(separator=" ", strip=True) if time_elem else ""
+                        elements_dict['tournament'] = tournament_elem.get_text(separator=" ", strip=True) if tournament_elem else ""
+                        elements_dict['country'] = country.get_text(separator=" ", strip=True) if country else ""
+                        elements_dict['left_country'] = left_country.get_text(separator=" ", strip=True) if left_country else ""
+                        elements_dict['left_country_flag'] = left_country.find('img')['src'] if left_country else ""
+                        elements_dict['right_country'] = right_country.get_text(separator=" ", strip=True) if right_country else ""
+                        elements_dict['right_country_flag'] = right_country.find('img')['src'] if right_country else ""
+
+                        save_row.append(elements_dict)
         else:
             print("타겟 요소를 찾을 수 없습니다.")
         
