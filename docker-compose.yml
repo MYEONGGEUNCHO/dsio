@@ -1,0 +1,15 @@
+version: "3"
+
+services:
+  mongodb:
+    image: mongo:4.2.21
+    container_name: mongo_db
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=root
+      - MONGO_INITDB_ROOT_PASSWORD=1234
+      - MONGO_INITDB_DATABASE=olympic
+    ports:
+      - 27017:27017
+    restart: always
+    volumes:
+      - "/d/docker/database/mongodb/data:/data/db"

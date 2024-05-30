@@ -1,0 +1,21 @@
+[tool.poetry]
+name = "dsio"
+version = "0.1.0"
+description = ""
+authors = ["chomyeonggeun <lightkeun@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.12"
+fastapi = {extras = ["all"], version = "^0.111.0"}
+requests = "^2.32.2"
+beautifulsoup4 = "^4.12.3"
+kafka-python = "^2.0.2"
+confluent-kafka = "^2.4.0"
+pymongo = "^4.7.2"
+selenium = "^4.21.0"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

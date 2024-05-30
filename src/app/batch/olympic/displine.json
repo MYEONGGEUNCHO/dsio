@@ -1,0 +1,319 @@
+{
+  "disciplines": [
+    {
+      "slug": "discipline-3x3-basketball",
+      "title": "3x3 농구 ",
+      "hrefLink": "https://olympics.com/ko/paris-2024/sports/3x3-basketball",
+      "OdfCode": "BK3",
+      "SortOrder": 999
+    },
+    {
+      "slug": "discipline-rugby-sevens",
+      "title": "7인제 럭비  ",
+      "hrefLink": "https://olympics.com/ko/paris-2024/sports/rugby-sevens",
+      "OdfCode": "RU7",
+      "SortOrder": 999
+    },
+    {
+      "slug": "discipline-swimming",
+      "title": "경영",
+      "hrefLink": "https://olympics.com/ko/paris-2024/sports/swimming",
+      "OdfCode": "SWM",
+      "SortOrder": 999
+    },
+    {
+      "slug": "discipline-golf",
+      "title": "골프",
+      "hrefLink": "https://olympics.com/ko/paris-2024/sports/golf",
+      "OdfCode": "GLF",
+      "SortOrder": 999
+    },
+    {
+      "slug": "discipline-modern-pentathlon",
+      "title": "근대5종",
+      "hrefLink": "https://olympics.com/ko/paris-2024/sports/modern-pentathlon",
+      "OdfCode": "MPN",
+      "SortOrder": 999
+    },
+    {
+      "slug": "discipline-artistic-gymnastics",
+      "title": "기계체조",
+      "hrefLink": "https://olympics.com/ko/paris-2024/sports/artistic-gymnastics",
+      "OdfCode": "GAR",
+      "SortOrder": 999
+    },
+    {
+      "slug": "discipline-basketball",
+      "title": "농구",
+      "hrefLink": "https://olympics.com/ko/paris-2024/sports/basketball",
+      "OdfCode": "BKB",
+      "SortOrder": 999
+    },
+    {
+      "slug": "discipline-diving",
+      "title": "다이빙",
+      "hrefLink": "https://olympics.com/ko/paris-2024/sports/diving",
+      "OdfCode": "DIV",
+      "SortOrder": 999
+    },
+    {
+      "slug": "discipline-wrestling",
+      "title": "레슬링",
+      "hrefLink": "https://olympics.com/ko/paris-2024/sports/wrestling",
+      "OdfCode": "WRE",
+      "SortOrder": 999
+    },
+    {
+      "slug": "discipline-rhythmic-gymnastics",
+      "title": "리듬체조",
+      "hrefLink": "https://olympics.com/ko/paris-2024/sports/rhythmic-gymnastics",
+      "OdfCode": "GRY",
+      "SortOrder": 999
+    },
+    {
+      "slug": "discipline-marathon-swimming",
+      "title": "마라톤 수영",
+      "hrefLink": "https://olympics.com/ko/paris-2024/sports/marathon-swimming",
+      "OdfCode": "OWS",
+      "SortOrder": 999
+    },
+    {
+      "slug": "discipline-volleyball",
+      "title": "배구",
+      "hrefLink": "https://olympics.com/ko/paris-2024/sports/volleyball",
+      "OdfCode": "VVO",
+      "SortOrder": 999
+    },
+    {
+      "slug": "discipline-badminton",
+      "title": "배드민턴",
+      "hrefLink": "https://olympics.com/ko/paris-2024/sports/badminton",
+      "OdfCode": "BDM",
+      "SortOrder": 999
+    },
+    {
+      "slug": "discipline-boxing",
+      "title": "복싱",
+      "hrefLink": "https://olympics.com/ko/paris-2024/sports/boxing",
+      "OdfCode": "BOX",
+      "SortOrder": 999
+    },
+    {
+      "slug": "discipline-breaking",
+      "title": "브레이킹",
+      "hrefLink": "https://olympics.com/ko/paris-2024/sports/breaking",
+      "OdfCode": "BKG",
+      "SortOrder": 999
+    },
+    {
+      "slug": "discipline-beach-volleyball",
+      "title": "비치발리볼",
+      "hrefLink": "https://olympics.com/ko/paris-2024/sports/beach-volleyball",
+      "OdfCode": "VBV",
+      "SortOrder": 999
+    },
+    {
+      "slug": "discipline-shooting",
+      "title": "사격",
+      "hrefLink": "https://olympics.com/ko/paris-2024/sports/shooting",
+      "OdfCode": "SHO",
+      "SortOrder": 999
+    },
+    {
+      "slug": "discipline-cycling-bmx-racing",
+      "title": "사이클 BMX 레이싱",
+      "hrefLink": "https://olympics.com/ko/paris-2024/sports/cycling-bmx-racing",
+      "OdfCode": "BMX",
+      "SortOrder": 999
+    },
+    {
+      "slug": "discipline-cycling-bmx-freestyle",
+      "title": "사이클 BMX 프리스타일",
+      "hrefLink": "https://olympics.com/ko/paris-2024/sports/cycling-bmx-freestyle",
+      "OdfCode": "BMF",
+      "SortOrder": 999
+    },
+    {
+      "slug": "discipline-cycling-road",
+      "title": "사이클 도로",
+      "hrefLink": "https://olympics.com/ko/paris-2024/sports/cycling-road",
+      "OdfCode": "CRD",
+      "SortOrder": 999
+    },
+    {
+      "slug": "discipline-cycling-mountain-bike",
+      "title": "사이클 산악자전거",
+      "hrefLink": "https://olympics.com/ko/paris-2024/sports/cycling-mountain-bike",
+      "OdfCode": "MTB",
+      "SortOrder": 999
+    },
+    {
+      "slug": "discipline-cycling-track",
+      "title": "사이클 트랙",
+      "hrefLink": "https://olympics.com/ko/paris-2024/sports/cycling-track",
+      "OdfCode": "CTR",
+      "SortOrder": 999
+    },
+    {
+      "slug": "discipline-surfing",
+      "title": "서핑",
+      "hrefLink": "https://olympics.com/ko/paris-2024/sports/surfing",
+      "OdfCode": "SRF",
+      "SortOrder": 999
+    },
+    {
+      "slug": "discipline-water-polo",
+      "title": "수구",
+      "hrefLink": "https://olympics.com/ko/paris-2024/sports/water-polo",
+      "OdfCode": "WPO",
+      "SortOrder": 999
+    },
+    {
+      "slug": "discipline-skateboarding",
+      "title": "스케이트보드",
+      "hrefLink": "https://olympics.com/ko/paris-2024/sports/skateboarding",
+      "OdfCode": "SKB",
+      "SortOrder": 999
+    },
+    {
+      "slug": "discipline-sport-climbing",
+      "title": "스포츠클라이밍 ",
+      "hrefLink": "https://olympics.com/ko/paris-2024/sports/sport-climbing",
+      "OdfCode": "CLB",
+      "SortOrder": 999
+    },
+    {
+      "slug": "discipline-equestrian",
+      "title": "승마",
+      "hrefLink": "https://olympics.com/ko/paris-2024/sports/equestrian",
+      "OdfCode": "EQU",
+      "SortOrder": 999
+    },
+    {
+      "slug": "discipline-artistic-swimming",
+      "title": "아티스틱 스위밍",
+      "hrefLink": "https://olympics.com/ko/paris-2024/sports/artistic-swimming",
+      "OdfCode": "SWA",
+      "SortOrder": 999
+    },
+    {
+      "slug": "discipline-archery",
+      "title": "양궁",
+      "hrefLink": "https://olympics.com/ko/paris-2024/sports/archery",
+      "OdfCode": "ARC",
+      "SortOrder": 999
+    },
+    {
+      "slug": "discipline-weightlifting",
+      "title": "역도",
+      "hrefLink": "https://olympics.com/ko/paris-2024/sports/weightlifting",
+      "OdfCode": "WLF",
+      "SortOrder": 999
+    },
+    {
+      "slug": "discipline-sailing",
+      "title": "요트",
+      "hrefLink": "https://olympics.com/ko/paris-2024/sports/sailing",
+      "OdfCode": "SAL",
+      "SortOrder": 999
+    },
+    {
+      "slug": "discipline-judo",
+      "title": "유도",
+      "hrefLink": "https://olympics.com/ko/paris-2024/sports/judo",
+      "OdfCode": "JUD",
+      "SortOrder": 999
+    },
+    {
+      "slug": "discipline-athletics",
+      "title": "육상",
+      "hrefLink": "https://olympics.com/ko/paris-2024/sports/athletics",
+      "OdfCode": "ATH",
+      "SortOrder": 999
+    },
+    {
+      "slug": "discipline-rowing",
+      "title": "조정",
+      "hrefLink": "https://olympics.com/ko/paris-2024/sports/rowing",
+      "OdfCode": "ROW",
+      "SortOrder": 999
+    },
+    {
+      "slug": "discipline-football",
+      "title": "축구",
+      "hrefLink": "https://olympics.com/ko/paris-2024/sports/football",
+      "OdfCode": "FBL",
+      "SortOrder": 999
+    },
+    {
+      "slug": "discipline-canoe-kayak-flatwater",
+      "title": "카누 스프린트",
+      "hrefLink": "https://olympics.com/ko/paris-2024/sports/canoe-kayak-flatwater",
+      "OdfCode": "CSP",
+      "SortOrder": 999
+    },
+    {
+      "slug": "discipline-canoe-kayak-slalom",
+      "title": "카누 슬라럼",
+      "hrefLink": "https://olympics.com/ko/paris-2024/sports/canoe-kayak-slalom",
+      "OdfCode": "CSL",
+      "SortOrder": 999
+    },
+    {
+      "slug": "discipline-table-tennis",
+      "title": "탁구",
+      "hrefLink": "https://olympics.com/ko/paris-2024/sports/table-tennis",
+      "OdfCode": "TTE",
+      "SortOrder": 999
+    },
+    {
+      "slug": "discipline-taekwondo",
+      "title": "태권도",
+      "hrefLink": "https://olympics.com/ko/paris-2024/sports/taekwondo",
+      "OdfCode": "TKW",
+      "SortOrder": 999
+    },
+    {
+      "slug": "discipline-tennis",
+      "title": "테니스",
+      "hrefLink": "https://olympics.com/ko/paris-2024/sports/tennis",
+      "OdfCode": "TEN",
+      "SortOrder": 999
+    },
+    {
+      "slug": "discipline-triathlon",
+      "title": "트라이애슬론",
+      "hrefLink": "https://olympics.com/ko/paris-2024/sports/triathlon",
+      "OdfCode": "TRI",
+      "SortOrder": 999
+    },
+    {
+      "slug": "discipline-trampoline-gymnastics",
+      "title": "트램폴린",
+      "hrefLink": "https://olympics.com/ko/paris-2024/sports/trampoline-gymnastics",
+      "OdfCode": "GTR",
+      "SortOrder": 999
+    },
+    {
+      "slug": "discipline-fencing",
+      "title": "펜싱",
+      "hrefLink": "https://olympics.com/ko/paris-2024/sports/fencing",
+      "OdfCode": "FEN",
+      "SortOrder": 999
+    },
+    {
+      "slug": "discipline-hockey",
+      "title": "하키",
+      "hrefLink": "https://olympics.com/ko/paris-2024/sports/hockey",
+      "OdfCode": "HOC",
+      "SortOrder": 999
+    },
+    {
+      "slug": "discipline-handball",
+      "title": "핸드볼",
+      "hrefLink": "https://olympics.com/ko/paris-2024/sports/handball",
+      "OdfCode": "HBL",
+      "SortOrder": 999
+    }
+  ]
+}
