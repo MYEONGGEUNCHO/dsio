@@ -31,6 +31,18 @@ def collect_sport(
         , debug=debug
     ))
 
+@main.command()
+@click.option('-d', '--debug', default=False, is_flag=True)
+def bulk_sport_info(debug: bool):
+    """전체 경기정보 수집
+
+    Args:
+        debug (bool): 개발:True 운영:False
+    """
+    from batch.olympic.collect_sport import bulk_sport_info
+
+    print(bulk_sport_info(debug=debug))
+
 
 @main.command()
 @click.option('-d', '--debug', default=False, is_flag=True)
@@ -38,6 +50,9 @@ def list_schedule(
         debug: bool
     ):
     """전체 경기일정 정보 수집
+
+    Args:
+        debug (bool): 개발:True 운영:False
     """
     from batch.olympic.collect_schedule import list_schedule
 
@@ -47,25 +62,26 @@ def list_schedule(
 
 
 @main.command()
-@click.option('-g', '--game_name', default="농구")
-@click.option('-ge', '--game_en_name', default="basketball")
+@click.option('-s', '--sport_name', default="농구")
+@click.option('-sge', '--sport_en_name', default="basketball")
 @click.option('-d', '--debug', default=False, is_flag=True)
 def collect_schedule(
-        game_name: str
-        , game_en_name: str
+        sport_name: str
+        , sport_en_name: str
         , debug: bool
     ):
     """경기일정 정보 수집 단위기능
 
     Args:
-        sport (str): _description_
-        debug (bool): _description_
+        sport_name (str): 한글종목명
+        sport_en_name (str): 영문종목명
+        debug (bool): 개발:True 운영:False
     """
     from batch.olympic.collect_schedule import collect_schedule
 
     print(collect_schedule(
-        game_name=game_name
-        , game_en_name=game_en_name
+        sport_name=sport_name
+        , sport_en_name=sport_en_name
         , debug=debug
     ))
 
@@ -78,3 +94,4 @@ def collect_schedule_test():
     from batch.olympic.collect_schedule import collect_schedule_test
 
     print(collect_schedule_test())
+

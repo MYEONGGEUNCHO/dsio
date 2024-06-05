@@ -39,10 +39,10 @@ def collect_code(
 
     for discipline in data["disciplines"]:
         new_discipline = {
-            "game_name": discipline["title"].strip(),
-            "game_en_name": discipline["slug"].replace("discipline-", ""),
+            "sport_name": discipline["title"].strip(),
+            "sport_en_name": discipline["slug"].replace("discipline-", ""),
             "link": discipline["hrefLink"],
-            "game_code": discipline["OdfCode"]
+            "sport_code": discipline["OdfCode"]
         }
         sports_list.append(new_discipline)
     db_save(sports_list, debug)

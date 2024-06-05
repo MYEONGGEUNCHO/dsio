@@ -3,8 +3,9 @@ import json
 import urllib3
 import requests
 import os
+import locale
 
-from datetime import datetime
+from datetime import datetime, timedelta
 from bs4 import BeautifulSoup
 from typing import List, Tuple, Dict, Any, Optional
 
@@ -17,6 +18,33 @@ from nosql.mongo.session import client_dev as mongo_client_dev
 
 from batch.olympic.common import list_sport
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
+
+# 한국어 요일을 영어 요일로 변환하기 위한 딕셔너리
+days = {
+    '월요일': 'Monday',
+    '화요일': 'Tuesday',
+    '수요일': 'Wednesday',
+    '목요일': 'Thursday',
+    '금요일': 'Friday',
+    '토요일': 'Saturday',
+    '일요일': 'Sunday'
+}
+
+# 월 이름을 숫자로 변환하기 위한 딕셔너리
+months = {
+    '1월': '01',
+    '2월': '02',
+    '3월': '03',
+    '4월': '04',
+    '5월': '05',
+    '6월': '06',
+    '7월': '07',
+    '8월': '08',
+    '9월': '09',
+    '10월': '10',
+    '11월': '11',
+    '12월': '12'
+}
 
 
 def db_save(
@@ -100,7 +128,7 @@ def list_schedule(debug: bool):
     sports = list_sport(debug)
 
     for sport in sports:
-        url = f"https://olympics.com/ko/paris-2024/schedule/{sport["game_en_name"]}"
+        url = f"https://olympics.com/ko/paris-2024/schedule/{sport["sport_en_name"]}"
         headers = {
             'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.3'
         }
@@ -136,18 +164,71 @@ def list_schedule(debug: bool):
                         left_country = schedule.find(class_='EventListItem-styles__LeftCountryContainer-sc-6aa92e06-11')
                         right_country = schedule.find(class_='EventListItem-styles__RightCountryContainer-sc-6aa92e06-12')
                         
+                        date = date_elem.get_text(separator=" ", strip=True) if date_elem else ""
+                        time = time_elem.get_text(separator=" ", strip=True) if time_elem else ""
+
+                        date_object= ""
+                        timestamp = ""
+                        paris_date = ""
+                        paris_time = ""
+                        koria_date = ""
+                        koria_time = ""
+
+                        if date != "" and time != "":
+                            # 문자열을 datetime 객체로 변환
+
+                            date_string = date + " " + time
+
+                            # 문자열에서 요일을 영어로 변환
+                            for k, v in days.items():
+                                if k in date_string:
+                                    date_string = date_string.replace(k, v)
+
+                            # 문자열에서 월을 숫자로 변환
+                            for k, v in months.items():
+                                if k in date_string:
+                                    date_string = date_string.replace(k, v)
+
+                            date_object = datetime.strptime(date_string, "%A %d %m %H:%M")
+
+                            # 연도를 2024로 설정
+                            date_object = date_object.replace(year=2024)
+
+                            date_object_ko = (date_object + timedelta(hours=7))
+
+                            # datetime 객체를 타임스탬프로 변환
+                            timestamp = date_object.timestamp()
+                            timestamp_ko = date_object_ko.timestamp
+
+                            # 요일과 날짜 출력
+                            paris_date = date_object.strftime("%A %d %m")
+                            koria_date = date_object_ko.strftime("%A %d %m")
+
+                            # 시간 출력
+                            paris_time = date_object.strftime("%H:%M")
+                            koria_time = date_object_ko.strftime("%H:%M")
+
+
+
+                        
+
+
                         elements_dict['std_date'] = std_date
-                        elements_dict['game_name'] = sport["game_name"]
-                        elements_dict['game_en_name'] = sport["game_en_name"]
-                        elements_dict['date'] = date_elem.get_text(separator=" ", strip=True) if date_elem else ""
+                        elements_dict['sport_name'] = sport["sport_name"]
+                        elements_dict['sport_en_name'] = sport["sport_en_name"]
+                        # elements_dict['date'] = date_elem.get_text(separator=" ", strip=True) if date_elem else ""
                         elements_dict['stadium'] = stadium_elem.get_text(separator=" ", strip=True) if stadium_elem else ""
-                        elements_dict['time'] = time_elem.get_text(separator=" ", strip=True) if time_elem else ""
-                        elements_dict['tournament'] = tournament_elem.get_text(separator=" ", strip=True) if tournament_elem else ""
+                        # elements_dict['time'] = time_elem.get_text(separator=" ", strip=True) if time_elem else ""
+                        elements_dict['content'] = tournament_elem.get_text(separator=" ", strip=True) if tournament_elem else ""
                         elements_dict['country'] = country.get_text(separator=" ", strip=True) if country else ""
-                        elements_dict['left_country'] = left_country.get_text(separator=" ", strip=True) if left_country else ""
-                        elements_dict['left_country_flag'] = left_country.find('img')['src'] if left_country else ""
-                        elements_dict['right_country'] = right_country.get_text(separator=" ", strip=True) if right_country else ""
-                        elements_dict['right_country_flag'] = right_country.find('img')['src'] if right_country else ""
+                        elements_dict['country1_name'] = left_country.get_text(separator=" ", strip=True) if left_country else ""
+                        elements_dict['country1_flag'] = left_country.find('img')['src'] if left_country else ""
+                        elements_dict['country2_name'] = right_country.get_text(separator=" ", strip=True) if right_country else ""
+                        elements_dict['country2_flag'] = right_country.find('img')['src'] if right_country else ""
+                        elements_dict['paris_date'] = paris_date
+                        elements_dict['paris_time'] = paris_time
+                        elements_dict['korea_date'] = koria_date
+                        elements_dict['korea_time'] = koria_time
 
                         save_row.append(elements_dict)
             else:
@@ -172,8 +253,8 @@ def list_schedule(debug: bool):
 
 
 def collect_schedule(
-        game_name: str
-        , game_en_name: str
+        sport_name: str
+        , sport_en_name: str
         , debug: bool
     ):
     """단일 스포츠 종목 수집 기능
@@ -182,7 +263,7 @@ def collect_schedule(
         sports (str): 종목 영문명
     """
     # 대상 URL
-    url = f"https://olympics.com/ko/paris-2024/schedule/{game_en_name}"
+    url = f"https://olympics.com/ko/paris-2024/schedule/{sport_en_name}"
     headers = {
         'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.3'
     }
@@ -219,8 +300,8 @@ def collect_schedule(
                         right_country = schedule.find(class_='EventListItem-styles__RightCountryContainer-sc-6aa92e06-12')
           
                         elements_dict['std_date'] = std_date
-                        elements_dict['game_name'] = game_name
-                        elements_dict['game_en_name'] = game_en_name
+                        elements_dict['sport_name'] = sport_name
+                        elements_dict['sport_en_name'] = sport_en_name
                         elements_dict['date'] = date_elem.get_text(separator=" ", strip=True) if date_elem else ""
                         elements_dict['stadium'] = stadium_elem.get_text(separator=" ", strip=True) if stadium_elem else ""
                         elements_dict['time'] = time_elem.get_text(separator=" ", strip=True) if time_elem else ""
