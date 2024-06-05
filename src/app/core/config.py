@@ -28,6 +28,7 @@ class Settings(BaseSettings):
     DB_URI_TYPE: str = 'MYSQL'
     DB_URI_TEMPLATE: Dict[str, str] = {
         'MYSQL' : 'mysql+pymysql://{}:{}@{}:{}/{}?charset=utf8mb4',
+        'MYSQL_DEV' : 'mysql+pymysql://{}:{}@{}:{}/{}?charset=utf8mb4',
         # 'MARIA_SOL' : 'mysql+pymysql://{}:{}@{}:{}/{}?charset=utf8mb4',
         # 'MSSQL_MSG': 'mssql+pymssql://{}:{}@{}:{}/{}?charset=cp949',
         # 'MSSQL': 'mssql+pymssql://{}:{}@{}:{}/{}?charset=cp949',
@@ -37,23 +38,23 @@ class Settings(BaseSettings):
 
     DB_CONNECTION_INFO: Dict[str, Dict[str, str]] = {
         'MYSQL': {
-            'user': os.getenv("MYSQL_HOST")
-            , 'pwd': os.getenv("MYSQL_PORT")
-            , 'host': os.getenv("MYSQL_USER")
-            , 'port': os.getenv("MYSQL_PWD")
+            'user': os.getenv("MYSQL_USER")
+            , 'pwd': os.getenv("MYSQL_PWD")
+            , 'host': os.getenv("MYSQL_HOST")
+            , 'port': os.getenv("MYSQL_PORT")
             , 'database': os.getenv("MYSQL_SCHEMA")
+        },
+        'MYSQL_DEV': {
+            'user': os.getenv("MYSQL_USER_DEV")
+            , 'pwd': os.getenv("MYSQL_PWD_DEV")
+            , 'host': os.getenv("MYSQL_HOST_DEV")
+            , 'port': os.getenv("MYSQL_PORT_DEV")
+            , 'database': os.getenv("MYSQL_SCHEMA_DEV")
         }
     }
 
     DB_POOL_SIZE: int = 10
     DB_MAX_OVERFLOW: int = -1
-
-    # COMMON Utils 관련 환경설정
-    # DATE_FMT = [
-    #     '%Y%m%d',
-    #     '%Y-%m-%d',
-    #     '%Y/%m/%d'
-    # ]
 
     def get_db_uri(
         self,

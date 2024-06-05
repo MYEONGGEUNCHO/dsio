@@ -95,3 +95,27 @@ def collect_schedule_test():
 
     print(collect_schedule_test())
 
+
+@main.command()
+@click.option('-d', '--debug', default=False, is_flag=True)
+def bulk_sport(debug: bool):
+    """MongoDB 종목정보 테이블에서 Mysql종목정보 테이블로 데이터 insert
+
+    Args:
+        debug (bool): 개발:True 운영:False
+    """
+    from batch.olympic.batch_sport import batch_sport
+
+    print(batch_sport(debug=debug))
+
+@main.command()
+@click.option('-d', '--debug', default=False, is_flag=True)
+def insert_col(debug: bool):
+    """MongoDB 컬렉션 복사 기능
+
+    Args:
+        debug (bool): 개발:True 운영:False
+    """
+    from batch.olympic.insert_col import insert_col
+
+    print(insert_col(debug=debug))
