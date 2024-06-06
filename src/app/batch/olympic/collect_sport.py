@@ -149,7 +149,7 @@ def bulk_sport_info(
             item_dict["link"] = sport["link"]
             item_dict["title_image"] = title_image
             item_dict["sport_info"] = "\n".join(game_disc_list)
-            item_dict["sport_info_lsit"] = game_disc_list
+            item_dict["sport_info_list"] = game_disc_list
             item_dict["sport_rule"] = "\n".join(game_rule_list)
             item_dict["sport_rule_list"] = game_rule_list
             item_dict["sport_history"] = "\n".join(game_hist_list)

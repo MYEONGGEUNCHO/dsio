@@ -219,7 +219,7 @@ def list_schedule(debug: bool):
                         # elements_dict['date'] = date_elem.get_text(separator=" ", strip=True) if date_elem else ""
                         elements_dict['stadium'] = stadium_elem.get_text(separator=" ", strip=True) if stadium_elem else ""
                         # elements_dict['time'] = time_elem.get_text(separator=" ", strip=True) if time_elem else ""
-                        elements_dict['content'] = tournament_elem.get_text(separator=" ", strip=True) if tournament_elem else ""
+                        elements_dict['tournament'] = tournament_elem.get_text(separator=" ", strip=True) if tournament_elem else ""
                         elements_dict['country'] = country.get_text(separator=" ", strip=True) if country else ""
                         elements_dict['country1_name'] = left_country.get_text(separator=" ", strip=True) if left_country else ""
                         elements_dict['country1_flag'] = left_country.find('img')['src'] if left_country else ""

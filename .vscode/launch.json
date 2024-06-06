@@ -105,6 +105,18 @@
                 "insert-col",
                 "-d"
             ]
+        },
+        {
+            "name": "RUN: update-col",
+            "type": "python",
+            "request": "launch",
+            "program": "${workspaceFolder}/src/app/main.py",
+            "console": "integratedTerminal",
+            "args": [
+                "olympic",
+                "update-col",
+                "-d"
+            ]
         }
     ]
 }

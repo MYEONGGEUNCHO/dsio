@@ -119,3 +119,15 @@ def insert_col(debug: bool):
     from batch.olympic.insert_col import insert_col
 
     print(insert_col(debug=debug))
+
+@main.command()
+@click.option('-d', '--debug', default=False, is_flag=True)
+def update_col(debug: bool):
+    """MongoDB Update기능
+
+    Args:
+        debug (bool): 개발:True 운영:False
+    """
+    from batch.olympic.update_col import update_col
+
+    print(update_col(debug=debug))
