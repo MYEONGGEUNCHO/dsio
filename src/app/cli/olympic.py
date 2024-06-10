@@ -98,7 +98,7 @@ def collect_schedule_test():
 
 @main.command()
 @click.option('-d', '--debug', default=False, is_flag=True)
-def bulk_sport(debug: bool):
+def batch_sport(debug: bool):
     """MongoDB 종목정보 테이블에서 Mysql종목정보 테이블로 데이터 insert
 
     Args:
@@ -107,6 +107,18 @@ def bulk_sport(debug: bool):
     from batch.olympic.batch_sport import batch_sport
 
     print(batch_sport(debug=debug))
+
+@main.command()
+@click.option('-d', '--debug', default=False, is_flag=True)
+def batch_stadium(debug: bool):
+    """MongoDB 경기장정보 테이블에서 Mysql 경기장정보 테이블로 데이터 insert
+
+    Args:
+        debug (bool): 개발:True 운영:False
+    """
+    from batch.olympic.batch_stadium import batch_stadium
+
+    print(batch_stadium(debug=debug))
 
 @main.command()
 @click.option('-d', '--debug', default=False, is_flag=True)
@@ -131,3 +143,21 @@ def update_col(debug: bool):
     from batch.olympic.update_col import update_col
 
     print(update_col(debug=debug))
+
+
+@main.command()
+@click.option('-sd', '--start-date', default="")
+@click.option('-t1', '--tcals1', default = 0)
+@click.option('-d', '--debug', default=False, is_flag=True)
+def update_schedule_info(
+    start_date: str
+    , tcals1: int
+    , debug: bool
+):
+    from batch.olympic.update_col import update_schedule_info
+
+    print(update_schedule_info(
+        issu_dt_start=start_date
+        , tcals1=tcals1
+        , debug=debug
+    ))

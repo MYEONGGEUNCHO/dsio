@@ -25,7 +25,7 @@ def list_sport(debug: bool) -> List[str]:
     """MongoDB 종목정보 테이블에서 Mysql종목정보 테이블로 데이터 insert
 
     Returns:
-        List[str]: 종목명 리스트
+        List[str]: 종목 리스트
     """
     if debug:
         mongo_db_dev = mongo_client_dev['olympic']
@@ -34,23 +34,10 @@ def list_sport(debug: bool) -> List[str]:
         mongo_db = mongo_client['olympic']
         mongo_col = mongo_db['sports_info']
 
-    D = mongo_col.find()
+    docs = mongo_col.find()
 
-    sport_list = list()
-    for d in D:
-        sport_dict = dict()
-        
-        sport_dict['sport_code'] = d['sport_code']
-        sport_dict['sport_name'] = d['sport_name']
-        sport_dict['title_image'] = d['title_image']
-        sport_dict['link'] = d['link']
-        sport_dict['sport_info'] = d['sport_info']
-        sport_dict['sport_rule'] = d['sport_rule']
-        sport_dict['sport_history'] = d['sport_history']
-
-        sport_list.append(sport_dict)
-    
-    return sport_list
+    D = [doc for doc in docs]
+    return D
 
 
 
@@ -60,7 +47,7 @@ def batch_sport(debug: bool):
     """MongoDB 종목정보 테이블에서 Mysql종목정보 테이블로 데이터 insert
     """
     if debug:
-        db = SessionLocal_dev()
+        db = SessionLocal()
         
     else:
         db = SessionLocal()

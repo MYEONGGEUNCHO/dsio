@@ -83,14 +83,26 @@
             ]
         },
         {
-            "name": "RUN: bulk-sport",
+            "name": "RUN: batch-sport",
             "type": "python",
             "request": "launch",
             "program": "${workspaceFolder}/src/app/main.py",
             "console": "integratedTerminal",
             "args": [
                 "olympic",
-                "bulk-sport",
+                "batch-sport",
+                "-d"
+            ]
+        },
+        {
+            "name": "RUN: batch-stadium",
+            "type": "python",
+            "request": "launch",
+            "program": "${workspaceFolder}/src/app/main.py",
+            "console": "integratedTerminal",
+            "args": [
+                "olympic",
+                "batch-stadium",
                 "-d"
             ]
         },
@@ -115,6 +127,18 @@
             "args": [
                 "olympic",
                 "update-col",
+                "-d"
+            ]
+        },
+        {
+            "name": "RUN: update-schedule-info",
+            "type": "python",
+            "request": "launch",
+            "program": "${workspaceFolder}/src/app/main.py",
+            "console": "integratedTerminal",
+            "args": [
+                "olympic",
+                "update-schedule-info",
                 "-d"
             ]
         }

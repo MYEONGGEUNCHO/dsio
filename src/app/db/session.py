@@ -40,5 +40,5 @@ engine_dev = create_engine(
 SessionLocal_dev = sessionmaker(
     autocommit=False
     , autoflush=False
-    , bind=engine
+    , bind=engine_dev
 )

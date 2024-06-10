@@ -201,8 +201,8 @@ def list_schedule(debug: bool):
                             timestamp_ko = date_object_ko.timestamp
 
                             # 요일과 날짜 출력
-                            paris_date = date_object.strftime("%A %d %m")
-                            koria_date = date_object_ko.strftime("%A %d %m")
+                            paris_date = date_object.strftime("%Y-%m-%d")
+                            koria_date = date_object_ko.strftime("%Y-%m-%d")
 
                             # 시간 출력
                             paris_time = date_object.strftime("%H:%M")
