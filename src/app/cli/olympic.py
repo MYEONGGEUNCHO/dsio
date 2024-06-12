@@ -122,6 +122,30 @@ def batch_stadium(debug: bool):
 
 @main.command()
 @click.option('-d', '--debug', default=False, is_flag=True)
+def batch_item(debug: bool):
+    """MongoDB 경기장정보 테이블에서 Mysql 경기장정보 테이블로 데이터 insert
+
+    Args:
+        debug (bool): 개발:True 운영:False
+    """
+    from batch.olympic.batch_item import batch_item
+
+    print(batch_item(debug=debug))
+
+@main.command()
+@click.option('-d', '--debug', default=False, is_flag=True)
+def batch_schedule(debug: bool):
+    """MongoDB 경기일정정보 테이블에서 Mysql 경기일정정보 테이블로 데이터 insert
+
+    Args:
+        debug (bool): 개발:True 운영:False
+    """
+    from batch.olympic.batch_schedule import batch_schedule
+
+    print(batch_schedule(debug=debug))
+
+@main.command()
+@click.option('-d', '--debug', default=False, is_flag=True)
 def insert_col(debug: bool):
     """MongoDB 컬렉션 복사 기능
 

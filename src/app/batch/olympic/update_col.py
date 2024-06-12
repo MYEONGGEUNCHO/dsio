@@ -43,7 +43,7 @@ def update_col(debug: bool):
             '_id': d['_id']
         }, {
             '$set': {
-                'stadium': d['stadium']
+                'stadium': d['stadium_ko_name']
             }
         })
 

@@ -32,7 +32,7 @@ def list_stadium(debug: bool) -> List[str]:
         mongo_col = mongo_db_dev['stadium_info']
     else:
         mongo_db = mongo_client['olympic']
-        mongo_col = mongo_db['sports_info']
+        mongo_col = mongo_db['stadium_info']
 
     docs = mongo_col.find()
 

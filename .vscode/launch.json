@@ -107,6 +107,30 @@
             ]
         },
         {
+            "name": "RUN: batch-schedule",
+            "type": "python",
+            "request": "launch",
+            "program": "${workspaceFolder}/src/app/main.py",
+            "console": "integratedTerminal",
+            "args": [
+                "olympic",
+                "batch-schedule",
+                "-d"
+            ]
+        },
+        {
+            "name": "RUN: batch-item",
+            "type": "python",
+            "request": "launch",
+            "program": "${workspaceFolder}/src/app/main.py",
+            "console": "integratedTerminal",
+            "args": [
+                "olympic",
+                "batch-item",
+                "-d"
+            ]
+        },
+        {
             "name": "RUN: insert-col",
             "type": "python",
             "request": "launch",
