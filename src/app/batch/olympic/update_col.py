@@ -117,8 +117,31 @@ def update_schedule_info(
                 "korea_time": d['korea_time'],
             }
         }
+        
+        mongo_col_b.update_one({
+            "sport_en_name": d["sport_en_name"],
+            "tournament": d["tournament"],
+            "korea_date": d["korea_date"],
+            "korea_time": d["korea_time"],
+        }, {
+            "$set": {
+                "std_date": d["std_date"],
+                "sport_name": d['sport_name'],
+                "sport_en_name": d['sport_en_name'],
+                "tournament": d['tournament'],
+                "country": d['country'],
+                "country1_name": d['country1_name'],
+                "country1_flag": d['country1_flag'],
+                "country2_name": d['country2_name'],
+                "country2_flag": d['country2_flag'],
+                "paris_date": d['paris_date'],
+                "paris_time": d['paris_time'],
+                "korea_date": d['korea_date'],
+                "korea_time": d['korea_time'],
+            }  
+        })
 
-        update_pymongo(mongo_col_b=mongo_col_b, select=select, update=update)
+        # mongo_col_b.update_one(select, update)
 
         
 
