@@ -59,19 +59,22 @@ def batch_sport(debug: bool):
         for d in D:
             query = text('''
                 INSERT INTO sport (
-                    sport_code, sport_name, title_image,
-                    link, sport_info, sport_rule,
-                    sport_history
+                    sport_code, sport_name, 
+                    sport_pictogram, title_image,
+                    link, sport_info, 
+                    sport_rule, sport_history
                 ) VALUES (
-                    :sport_code, :sport_name, :title_image,
-                    :link, :sport_info, :sport_rule,
-                    :sport_history
+                    :sport_code, :sport_name,
+                    :sport_pictogram, :title_image,
+                    :link, :sport_info,
+                    :sport_rule, :sport_history
                 )
             ''')
             
             db.execute(query, {
                 'sport_code': d['sport_code'],
                 'sport_name': d['sport_name'],
+                'sport_pictogram': d['sport_pictogram'],
                 'title_image': d['title_image'],
                 'link': d['link'],
                 'sport_info': d['sport_info'],

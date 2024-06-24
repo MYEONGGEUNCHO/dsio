@@ -165,6 +165,18 @@
                 "update-schedule-info",
                 "-d"
             ]
+        },
+        {
+            "name": "RUN: batch-update-schedule",
+            "type": "python",
+            "request": "launch",
+            "program": "${workspaceFolder}/src/app/main.py",
+            "console": "integratedTerminal",
+            "args": [
+                "olympic",
+                "batch-update-schedule",
+                "-d"
+            ]
         }
     ]
 }

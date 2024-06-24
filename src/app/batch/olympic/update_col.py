@@ -66,11 +66,11 @@ def update_schedule_info(
     if debug:
         mongo_db_dev = mongo_client_dev['olympic']
         mongo_col_a = mongo_db_dev['schedule_info']
-        mongo_col_b = mongo_db_dev['schedule_stadium_info']
+        mongo_col_b = mongo_db_dev['schedule_stadium_join']
     else:
         mongo_db = mongo_client['olympic']
         mongo_col_a = mongo_db['schedule_info']
-        mongo_col_b = mongo_db['schedule_stadium_info']
+        mongo_col_b = mongo_db['schedule_stadium_join']
     
     # 날짜가 없으면, 당일 일자로 계산해서 조회
     if issu_dt_start == '':
@@ -102,19 +102,12 @@ def update_schedule_info(
         update = {
             '$set': {
                 "std_date": d["std_date"],
-                "sport_name": d['sport_name'],
-                "sport_en_name": d['sport_en_name'],
-                "stadium": d['stadium'],
                 "tournament": d['tournament'],
                 "country": d['country'],
                 "country1_name": d['country1_name'],
                 "country1_flag": d['country1_flag'],
                 "country2_name": d['country2_name'],
                 "country2_flag": d['country2_flag'],
-                "paris_date": d['paris_date'],
-                "paris_time": d['paris_time'],
-                "korea_date": d['korea_date'],
-                "korea_time": d['korea_time'],
             }
         }
         
